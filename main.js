@@ -24,8 +24,8 @@ let enemyhp=[5,8,10,12,12]
 let enemyap=[3,3,5,5,5]
 let enemy1=[0,1]
 let enemy2=[1,2,3,4]
-let eitan1j=["〜について","俳優","実際は","助言者","〜に反対して","独りで","すでに","場所、土地","仕事、作業","事実、こと","光、明かり","文化","世紀"]
-let eitan1e=["about","actor","actually","adviser","adviser","alone","already","place","job","fact","light","culture","century"]
+let eitan1j=["〜について","俳優","実際は","助言者","独りで","すでに","場所、土地","仕事、作業","事実、こと","光、明かり","文化","世紀"]
+let eitan1e=["about","actor","actually","adviser","alone","already","place","job","fact","light","culture","century"]
 let eisaku1j=["これは日本です。(3)","こちらはマイクです。(3)","あちらはアリスです。(3)","これは腕時計ですか？(4)","あなたは先生です。(4)","あれはあなたのノートです。(4)"]
 let eisaku1e=["This is Japan.","This is Mike.","That is Alice.","Is this a watch?","you are a teacher.","That is your notebook."]
 window.onload=function startup(){///起動時処理
@@ -91,10 +91,11 @@ function fightenemy(){///戦闘開始
     }
     switch(parseInt(nowplace)){
         case 1:
-            nowenemy = enemy1[Math.floor(Math.random()*enemy1.length)]
+            nowenemy = enemy1[Math.floor(Math.random()*(enemy1.length-1))]
             break;
         case 2:
-            nowenemy = enemy2[Math.floor(Math.random()*enemy2.length)]
+            console.log("まうす")
+            nowenemy = enemy2[Math.floor(Math.random()*(enemy2.length-1))]
             break;
         default:
             nowenemy = 0
