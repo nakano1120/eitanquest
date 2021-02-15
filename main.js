@@ -217,6 +217,9 @@ function saveparam(){///パラメータ保存処理
     localStorage.setItem("nowplace", nowplace);
 }
 function forward(){
+    if(nowfight){
+        alert("現在戦闘中です。逃げるかもしくは戦ってください。")
+    }
     if(nowplace>=2){
         alert("ここから先は行き止まりのようだ。")
         return;
@@ -227,6 +230,9 @@ function forward(){
     saveparam();
 }
 function back(){
+    if(nowfight){
+        alert("現在戦闘中です。逃げるかもしくは戦ってください。")
+    }
     if(nowplace<=0){
         alert("ここから先は行き止まりのようだ。")
         return;
