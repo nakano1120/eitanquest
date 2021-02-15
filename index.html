@@ -10,7 +10,9 @@
     <h1 class="contant">英単クエスト</h1>
     <div class="contant" id="main">
         <span id="myname">Noname</span>さんのステータス<br>
-        <h3>LV:<span id="lv"></span><br>魔法LV:<span id="mlv"></span><br>お金:<span id="money">0</span>P</h3>
+        現在地:<div id="nowplace">はじまり草原</div>
+        <input type="button" value="戻る" id="back" onclick="back()"><input type="button" value="進む" id="forward" onclick="forward()">
+        <h3>LV:<span id="lv"></span>(次のレベルまで:<span id="next">0</span>)<br>魔法LV:<span id="mlv"></span><br>お金:<span id="money">0</span>P</h3>
         HP:<progress id="proghp" max="50" value="50"></progress><span id="hp"></span><br>
         MP:<progress id="progmp" max="50" value="50"></progress><span id="mp"></span><br>
         武器:<span id="weapon"></span><br>
@@ -21,11 +23,17 @@
         <span id="enemyname">雑魚くん</span>と戦闘中<br>
         HP:<progress id="proge" max="10" value="10"></progress><br>
         <input type="button" value="戦闘" onclick="battle()">
+        <input type="button" value="魔法" onclick="magic()">
     </div><br>
 
     <div class="contant" id="search">
-        <input type="button" value="戦闘スタート" onclick="fightenemy();"">
+        <h3>フィールドコマンド</h3>
+        <input type="button" value="戦闘スタート" onclick="fightenemy();">
+
     </div><br>
+    <div class="contant" id="town">
+        <input type="button" value="商店" onclick="shop();">  
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
