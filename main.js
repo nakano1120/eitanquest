@@ -80,6 +80,7 @@ function redraw(){///再描画
     document.getElementById("nowplace").textContent=nowplace+"."+place[nowplace]
     document.getElementById("next").textContent=next
     if(nowfight){
+        console.log(enemyhp[nowenemy])
         document.getElementById("proge").max=enemyhp[nowenemy]
         document.getElementById("proge").value=nowehp
     }
@@ -88,11 +89,16 @@ function fightenemy(){///戦闘開始
     if(nowfight){
         alert("現在戦闘中です。逃げるかもしくは戦ってください。")
     }
-    switch(nowplace){
+    switch(parseInt(nowplace)){
         case 1:
-            nowenemy=enemy1[Math.floor(Math.random()*enemy1.length)]
+            nowenemy = enemy1[Math.floor(Math.random()*enemy1.length)]
+            break;
         case 2:
-            nowenemy=enemy1[Math.floor(Math.random()*enemy2.length)]
+            nowenemy = enemy2[Math.floor(Math.random()*enemy2.length)]
+            break;
+        default:
+            nowenemy = 0
+            break;
     }
     alert(enemylist[nowenemy]+"が現れた！")
     alert("「戦闘」ボタンを押して出た日本語の英単語訳を小文字で答えてください。")
