@@ -261,6 +261,18 @@ function back(){
     redraw();
     saveparam();
 }
-function shop(){
-    
+function hotel(){
+    let yn = window.confirm(lv+'Pを消費して宿で回復します');
+    if(yn){
+        if(money<lv){
+            alert("お金が足りません！")
+            return
+        }
+        money-=lv
+        metor[1]=metor[0]
+        metor[3]=metor[2]
+        alert("HP・MPを全回復した！")
+    }else{
+        alert("キャンセルしました")
+    }
 }
