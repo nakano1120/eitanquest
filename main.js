@@ -265,8 +265,11 @@ function hotel(){
     let yn = window.confirm(lv+'Pを消費して宿で回復します');
     if(yn){
         if(money<lv){
-            alert("お金が足りません！")
-            return
+            alert("お金が足りません！");
+            return;
+        }else if(metor[1]==metor[0] && metor[3]==metor[2]){
+            alert("元気いっぱいなので回復する必要がありません");
+            return;
         }
         money-=lv
         metor[1]=metor[0]
