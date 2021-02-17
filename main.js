@@ -19,8 +19,8 @@ let money=0
 let nowplace
 let place=["なもなき村","はじまり草原(推奨LV1)","ネクストロード(推奨LV5)"]
 let placekind=[1,0,0]
-let weapon=["はじめての剣","岩石の剣"]
-let wp=[3,5]
+let weapon=["はじめての剣","岩石の剣","マジカルな剣"]
+let wp=[3,5,7]
 let armor=["はじめての盾","うけみの盾"]
 let ap=[1,2]
 let enemylist=["ざこくん","パンピー","ガンバレリーナ","こしあん兄貴","つぶあん兄貴"]
@@ -274,5 +274,29 @@ function hotel(){
         alert("HP・MPを全回復した！")
     }else{
         alert("キャンセルしました")
+    }
+}
+function buki(){
+    if(nowplace==0){
+        let bukiid = window.prompt("購入する武器を番号で選択してください\n1.岩石の剣 10P\n2.マジカルな剣 20P")
+        if(bukiid="1"){
+            if(money<10){
+                alert("お金が足りません！")
+                return
+            }
+            money-=10
+            wid=1
+            alert("武器を購入しました")
+        }else if(bukiid="2"){
+            if(money<20){
+                alert("お金が足りません！")
+                return
+            }
+            money-=20
+            wid=2
+            alert("武器を購入しました")
+        }else{
+            alert("武器を購入できませんでした")
+        }
     }
 }
