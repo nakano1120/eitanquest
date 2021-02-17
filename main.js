@@ -1,3 +1,7 @@
+var lvup = new Audio('se/lvup.mp3');
+var win = new Audio('se/win.mp3');
+var good = new Audio('se/good.mp3');
+var bad = new Audio('se/bad.mp3');
 let myname
 let lv=0
 let job
@@ -28,6 +32,7 @@ let eitan1j=["〜について","俳優","実際は","助言者","独りで","す
 let eitan1e=["about","actor","actually","adviser","alone","already","place","job","fact","light","culture","century"]
 let eisaku1j=["これは日本です。(3)","こちらはマイクです。(3)","あちらはアリスです。(3)","これは腕時計ですか？(4)","あなたは先生です。(4)","あれはあなたのノートです。(4)"]
 let eisaku1e=["This is Japan.","This is Mike.","That is Alice.","Is this a watch?","you are a teacher.","That is your notebook."]
+
 window.onload=function startup(){///起動時処理
     myname = localStorage.getItem("myName");
     if(myname === null){
@@ -65,11 +70,11 @@ function redraw(){///再描画
     }
     document.getElementById("myname").textContent=myname
     document.getElementById("lv").textContent=lv
-    document.getElementById("hp").textContent=metor[0]+"/"+metor[1]
+    document.getElementById("hp").textContent=metor[1]+"/"+metor[0]
     document.getElementById("proghp").max=metor[0]
     document.getElementById("proghp").style.width=metor[0]*3+"px"
     document.getElementById("proghp").value=metor[1]
-    document.getElementById("mp").textContent=metor[2]+"/"+metor[3]
+    document.getElementById("mp").textContent=metor[3]+"/"+metor[2]
     document.getElementById("progmp").style.width=metor[2]*3+"px"
     document.getElementById("progmp").max=metor[2]
     document.getElementById("progmp").value=metor[3]
@@ -117,15 +122,18 @@ function battle(){///戦闘処理
     let eitanid=Math.floor(Math.random()*eitan1j.length)
     answer = window.prompt(eitan1j[eitanid], "");
     if(eitan1e[eitanid]==answer){
+        good.play()
         alert("正解！")
         nowehp-=wp[wid]+Math.floor(Math.random()*lv)
     }else{
+        bad.play()
         alert("不正解！正解は"+eitan1e[eitanid])
         let damage = enemyap[nowenemy]+Math.floor(Math.random()*lv)-ap[aid]
         metor[1]-=damage
         alert(myname+"に"+damage+"ダメージ")
     }
     if(nowehp<=0){
+        win.play()
         alert(enemylist[nowenemy]+"を倒した！")
         money=parseInt(money)+enemyhp[nowenemy]+enemyap[nowenemy]
         metor[4]=parseInt(metor[4])+parseInt(enemyhp[nowenemy])
@@ -158,9 +166,11 @@ function magic(){
     let eisakuid=Math.floor(Math.random()*eisaku1j.length)
     answer = window.prompt(eisaku1j[eisakuid], "");
     if(eisaku1e[eisakuid]==answer){
+        good.play()
         alert("正解！")
         nowehp-=wp[wid]+Math.floor(Math.random()*lv)*(mlv+1)
     }else{
+        bad.play()
         alert("不正解！正解は"+eisaku1e[eisakunid])
         let damage = enemyap[nowenemy]+Math.floor(Math.random()*lv)-ap[aid]
         metor[1]-=damage
@@ -192,6 +202,7 @@ function explevel(){///経験値・レベルアップ処理
         if(metor[4] >= Math.floor(10*Math.pow(1.1,lv))){
             metor[4]-= Math.floor(10*Math.pow(1.1,lv))
             lv=parseInt(lv)+1
+            lvup.play()
             alert("レベルが１上がった！")
             metor[0]=parseInt(metor[0])+4
             metor[1]=parseInt(metor[1])+4
@@ -206,6 +217,7 @@ function explevel(){///経験値・レベルアップ処理
         if(metor[5] >= Math.floor(5*Math.pow(1.1,mlv))){
             metor[5]-= Math.floor(5*Math.pow(1.1,mlv))
             mlv=parseInt(mlv)+1
+            lvup.play()
             alert("魔法レベルが１上がった！")
         }else{
             break;
@@ -250,5 +262,5 @@ function back(){
     saveparam();
 }
 function shop(){
-    alert("現在準備中です。")
+    
 }
