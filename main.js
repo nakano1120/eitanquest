@@ -275,6 +275,8 @@ function hotel(){
     }else{
         alert("キャンセルしました")
     }
+    redraw()
+    saveparam()
 }
 function buki(){
     if(nowplace==0){
@@ -299,4 +301,6 @@ function buki(){
             alert("武器を購入できませんでした")
         }
     }
+    redraw()
+    saveparam()
 }
